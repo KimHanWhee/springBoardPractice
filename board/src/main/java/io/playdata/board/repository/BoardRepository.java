@@ -24,5 +24,13 @@ public class BoardRepository {
 	public List<BoardDTO> findAll(){
 		return sessionTemplate.selectList("board.findAll");
 	}
+
+	public BoardDTO findOne(BoardDTO id) {
+		return sessionTemplate.selectOne("board.findOne", id);
+	}
+	
+	public Integer deleteById(Integer id) {
+		return sessionTemplate.delete("board.deleteById", id);
+	}
 	
 }

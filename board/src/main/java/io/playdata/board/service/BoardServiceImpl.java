@@ -23,4 +23,15 @@ public class BoardServiceImpl implements BoardService {
 		return boardRepository.findAll();
 	}
 
+	@Override
+	public BoardDTO findOne(Integer id) {
+		BoardDTO dto = new BoardDTO(id);
+		return boardRepository.findOne(dto);
+	}
+
+	@Override
+	public Integer deleteById(Integer id) {
+		return boardRepository.deleteById(id);
+	}
+
 }

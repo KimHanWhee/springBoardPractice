@@ -23,6 +23,10 @@ public class BoardDTO {
 		this.userName = userName;
 		this.createDate = createDate;
 	}
+	public BoardDTO(Integer id) {
+		super();
+		this.id = id;
+	}
 	@Override
 	public String toString() {
 		return "BoardDTO [id=" + id + ", title=" + title + ", content=" + content + ", userName=" + userName

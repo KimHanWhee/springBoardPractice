@@ -50,7 +50,24 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/board/detail", method = RequestMethod.GET)
-	public String detail() {
-		return "/board/detail";
+	public ModelAndView detail(@RequestParam(required = false, value="boardId") Integer id) {
+		BoardDTO boards = boardService.findOne(id);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/board/detail");
+		if(boards.getId()==null) mav.setViewName("redirect:/board/home");
+		mav.addObject("boards", boards);
+		return mav;
+	}
+	
+	@RequestMapping(value="/board/delete", method = RequestMethod.GET)
+	public ModelAndView delete(@RequestParam("boardId") Integer id) {
+		ModelAndView mav = new ModelAndView();
+		Integer delRows = boardService.deleteById(id);
+		if(delRows==0) {
+			mav.setViewName("redirect:/board/detail?boardId="+id);
+		}else {
+			mav.setViewName("redirect:/board/home");
+		}
+		return mav;
 	}
 }

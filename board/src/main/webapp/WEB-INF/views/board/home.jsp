@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
+<link rel="stylesheet" href="/resources/css/home.css">
 <title>Insert title here</title>
 </head>
 <body>
@@ -25,11 +26,12 @@
 						<td><%=board.getCreateDate()%></td>
 					</tr>
 				<%}%> --%>
-			<c:forEach items="${boards}" var="board">>
+			<c:forEach items="${boards}" var="board">
 				<tr>
 					<td>${board.title}</td>
 					<td>${board.userName}</td>
 					<td>${board.createDate}</td>
+					<td><a href="detail?boardId=${board.id}">자세히 보기</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>

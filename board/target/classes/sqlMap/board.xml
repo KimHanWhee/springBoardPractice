@@ -14,4 +14,16 @@
 			order by createDate;
 		]]>
 	</select>
+	<select id="findOne" resultType="BoardDTO" parameterType="BoardDTO">
+		<![CDATA[
+			select id, title, userName, content, createDate
+			from board
+			where id = #{id};
+		]]>
+	</select>
+	<delete id="deleteById" parameterType="Integer">
+		<![CDATA[
+			delete from board where id = #{id}
+		]]>
+	</delete>
 </mapper>
